@@ -366,6 +366,14 @@ def continuous_training_loop():
     with open(DATASET_FILE, 'r', encoding='utf-8') as f:
         dataset = json.load(f)
     all_text = "".join([d["description"] for d in dataset])
+    
+    # Extend vocabulary to support Dream Mode generated text
+    thai_chars = "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮฤลฦะัาำิีึืุูเแโใไๅๆ็่้๊๋์ํ"
+    english_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    numbers = "0123456789"
+    symbols = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\n"
+    all_text += thai_chars + english_chars + numbers + symbols
+    
     chars = sorted(list(set(all_text)))
     vocab_size = len(chars)
     stoi = { ch:i for i,ch in enumerate(chars) }
