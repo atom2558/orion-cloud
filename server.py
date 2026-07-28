@@ -237,8 +237,9 @@ def continuous_training_loop():
     
     # Initialize 9arm Teacher AI once
     try:
+        api_key = os.environ.get("NINEARM_API_KEY", "sk-DvdsqHV_M5uxfQm3wWPWNA")
         ai_client = OpenAI(
-            api_key=os.environ.get("NINEARM_API_KEY", "sk-DvdsqHV_M5uxfQm3wWPWNA"),
+            api_key=api_key,
             base_url="https://gateway.9arm.co/v1"
         )
     except Exception as e:
@@ -260,47 +261,45 @@ def continuous_training_loop():
                 if ai_client:
                     try:
                         response = ai_client.chat.completions.create(
-                            model="qwen3.6-35b-a3b",
+                            model="gpt-4o-mini",
                             messages=[
-                                {"role": "system", "content": "ช่วยแต่งประโยคตอบกลับที่สั้น กระชับ เป็นภาษาไทย เพื่อใช้สอน AI ตอบแค่ตัวข้อความ ไม่ต้องมีคำอธิบาย"},
-                                {"role": "user", "content": prompt}
+                                {"role": "user", "content": f"ตอบคำถามนี้เป็นภาษาไทยสั้นๆ กระชับ: {prompt}"}
                             ],
-                            max_tokens=50
+                            max_tokens=80
                         )
-                        teacher_reply = response.choices[0].message.content.strip()
-                        target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply}"
+                        teacher_reply = response.choices[0].message.content
+                        if teacher_reply:
+                            target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply.strip()}"
                     except Exception as e:
                         print(f"[Teacher AI] Error: {e}")
                 target_texts.append(target_text)
                 
         else:
-            # --- DREAM MODE (FAST BATCH Self-Play) ---
+            # --- DREAM MODE: ถามแล้วเรียนรู้ ---
             is_dream = True
             dream_counter += 1
             if ai_client:
                 try:
-                    # Request 5 Q&A pairs at once to speed up data collection
                     resp = ai_client.chat.completions.create(
-                        model="qwen3.6-35b-a3b",
+                        model="gpt-4o-mini",
                         messages=[
-                            {"role": "system", "content": "คุณคือผู้ช่วยสร้างชุดข้อมูล AI"},
-                            {"role": "user", "content": "ช่วยแต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
+                            {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 5 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ"}
                         ],
-                        max_tokens=300
+                        max_tokens=400
                     )
                     content = resp.choices[0].message.content
-                    if content is None:
-                        print("[Dream Mode] API returned empty content (None). Sleeping...")
-                        time.sleep(5)
+                    if not content or not content.strip():
+                        print("[Dream Mode] API returned empty content. Sleeping 10s...")
+                        time.sleep(10)
                         continue
                     content = content.strip()
                     lines = content.split('\n')
                     current_q = ""
                     for line in lines:
                         line = line.strip()
-                        if line.startswith("Q:") or line.startswith("คำถาม:"):
+                        if line.lower().startswith("q:"):
                             current_q = line.split(":", 1)[1].strip()
-                        elif (line.startswith("A:") or line.startswith("คำตอบ:")) and current_q:
+                        elif line.lower().startswith("a:") and current_q:
                             ans = line.split(":", 1)[1].strip()
                             target_text = f"คุณ: {current_q} โอไรออน: {ans}"
                             print(f"[Dream Mode 💭] AI เรียนรู้: {target_text}")
@@ -308,9 +307,9 @@ def continuous_training_loop():
                             current_q = ""
                             
                 except Exception as e:
-                    print(f"[Dream Mode] Error generating batch data: {e}")
-                    
-        # --- EXECUTE TRAINING ---
+                    print(f"[Dream Mode] Error: {e}. Sleeping 10s...")
+                    time.sleep(10)
+
         if len(target_texts) > 0:
             total_loss = 0
             for target_text in target_texts:
