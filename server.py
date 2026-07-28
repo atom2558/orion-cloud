@@ -274,32 +274,37 @@ def continuous_training_loop():
                 target_texts.append(target_text)
                 
         else:
-            # --- DREAM MODE (Self-Play) ---
+            # --- DREAM MODE (FAST BATCH Self-Play) ---
             is_dream = True
             dream_counter += 1
             if ai_client:
                 try:
-                    q_resp = ai_client.chat.completions.create(
-                        model="qwen3.6-35b-a3b",
-                        messages=[{"role": "user", "content": "สร้างคำถามภาษาไทยสั้นๆ 1 คำถาม ที่คนทั่วไปมักจะถาม AI (เช่น วันนี้กินอะไรดี, โลกกลมไหม, 1+1 ได้เท่าไหร่) ขอแค่คำถามเดียว ไม่ต้องมีคำอธิบาย"}],
-                        max_tokens=20
-                    )
-                    random_prompt = q_resp.choices[0].message.content.strip()
-                    
-                    a_resp = ai_client.chat.completions.create(
+                    # Request 5 Q&A pairs at once to speed up data collection
+                    resp = ai_client.chat.completions.create(
                         model="qwen3.6-35b-a3b",
                         messages=[
-                            {"role": "system", "content": "ตอบคำถามต่อไปนี้สั้นๆ กระชับ เป็นภาษาไทย ตอบแค่ตัวข้อความ ไม่ต้องมีคำอธิบาย"},
-                            {"role": "user", "content": random_prompt}
+                            {"role": "system", "content": "คุณคือ AI สร้างชุดข้อมูลสั้นๆ ให้แต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
                         ],
-                        max_tokens=50
+                        max_tokens=300
                     )
-                    teacher_reply = a_resp.choices[0].message.content.strip()
-                    target_text = f"คุณ: {random_prompt} โอไรออน: {teacher_reply}"
-                    print(f"[Dream Mode 💭] AI เรียนรู้ด้วยตัวเอง: {target_text}")
-                    target_texts.append(target_text)
+                    content = resp.choices[0].message.content.strip()
+                    
+                    # Parse the Q&A pairs
+                    lines = content.split('\n')
+                    current_q = ""
+                    for line in lines:
+                        line = line.strip()
+                        if line.startswith("Q:") or line.startswith("คำถาม:"):
+                            current_q = line.split(":", 1)[1].strip()
+                        elif (line.startswith("A:") or line.startswith("คำตอบ:")) and current_q:
+                            ans = line.split(":", 1)[1].strip()
+                            target_text = f"คุณ: {current_q} โอไรออน: {ans}"
+                            print(f"[Dream Mode 💭] AI เรียนรู้: {target_text}")
+                            target_texts.append(target_text)
+                            current_q = ""
+                            
                 except Exception as e:
-                    print(f"[Dream Mode] Error generating data: {e}")
+                    print(f"[Dream Mode] Error generating batch data: {e}")
                     
         # --- EXECUTE TRAINING ---
         if len(target_texts) > 0:
@@ -342,7 +347,9 @@ def continuous_training_loop():
                 else:
                     print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
             
-        time.sleep(15) # Sleep 15s between loops
+        # Sleep less in Dream Mode to collect data faster (2 seconds instead of 15)
+        sleep_time = 2 if is_dream else 5
+        time.sleep(sleep_time)
 
 if __name__ == "__main__":
     threading.Thread(target=continuous_training_loop, daemon=True).start()
