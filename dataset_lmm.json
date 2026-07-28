@@ -1,0 +1,2002 @@
+[
+    {
+        "image_type": "cursor",
+        "description": "ภาพนี้คือ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "หน้าจอแสดง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ระบบตรวจพบ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ภาพนี้คือ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ฉันเห็น ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "หน้าจอแสดง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ระบบตรวจพบ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ภาพนี้คือ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ฉันเห็น เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ฉันเห็น หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ฉันเห็น เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "กำลังมอง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ฉันเห็น ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ฉันเห็น แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "กำลังมอง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ระบบตรวจพบ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ฉันเห็น เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ภาพนี้คือ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ฉันเห็น ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "หน้าจอแสดง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ฉันเห็น เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ระบบตรวจพบ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ภาพนี้คือ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "หน้าจอแสดง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "หน้าจอแสดง เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ระบบตรวจพบ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "หน้าจอแสดง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ฉันเห็น หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ภาพนี้คือ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "หน้าจอแสดง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "กำลังมอง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ระบบตรวจพบ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ฉันเห็น แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ระบบตรวจพบ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "กำลังมอง เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "กำลังมอง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ฉันเห็น เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "หน้าจอแสดง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ฉันเห็น หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ระบบตรวจพบ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "กำลังมอง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "กำลังมอง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ฉันเห็น หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ระบบตรวจพบ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "หน้าจอแสดง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "หน้าจอแสดง เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ฉันเห็น เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ภาพนี้คือ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ระบบตรวจพบ เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ฉันเห็น เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ฉันเห็น เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "กำลังมอง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "กำลังมอง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "กำลังมอง เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "หน้าจอแสดง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ระบบตรวจพบ เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ฉันเห็น ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "หน้าจอแสดง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "กำลังมอง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ระบบตรวจพบ เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "หน้าจอแสดง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "กำลังมอง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ฉันเห็น นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ฉันเห็น ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ฉันเห็น ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ฉันเห็น ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "กำลังมอง เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "หน้าจอแสดง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "กำลังมอง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ระบบตรวจพบ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ระบบตรวจพบ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ภาพนี้คือ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ระบบตรวจพบ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "กำลังมอง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "หน้าจอแสดง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "หน้าจอแสดง ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "หน้าจอแสดง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "หน้าจอแสดง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ภาพนี้คือ เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "กำลังมอง หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "กำลังมอง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ระบบตรวจพบ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ระบบตรวจพบ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ฉันเห็น แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ฉันเห็น หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ฉันเห็น ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "กำลังมอง ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ระบบตรวจพบ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "หน้าจอแสดง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "กำลังมอง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ภาพนี้คือ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "หน้าจอแสดง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ฉันเห็น หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "กำลังมอง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ภาพนี้คือ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ฉันเห็น แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ฉันเห็น เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "กำลังมอง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ภาพนี้คือ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "หน้าจอแสดง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "หน้าจอแสดง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "ภาพนี้คือ ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ภาพนี้คือ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "หน้าจอแสดง หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "หน้าจอแสดง แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "หน้าจอแสดง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ฉันเห็น หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "หน้าจอแสดง นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ระบบตรวจพบ หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ฉันเห็น ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "หน้าจอแสดง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "กำลังมอง หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ภาพนี้คือ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "text_box",
+        "description": "หน้าจอแสดง ช่องสำหรับพิมพ์ข้อความค้นหาข้อมูล ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ภาพนี้คือ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ฉันเห็น หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "ระบบตรวจพบ เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "ui_button",
+        "description": "ระบบตรวจพบ นี่คือปุ่มกดยืนยันสีเขียวบนหน้าจอ ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ฉันเห็น หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "desktop",
+        "description": "ภาพนี้คือ ภาพพื้นหลัง Desktop สีน้ำเงินเข้ม ครับ"
+    },
+    {
+        "image_type": "cursor",
+        "description": "กำลังมอง เมาส์เคอร์เซอร์กำลังชี้ไปที่มุมจอ ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ฉันเห็น หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "terminal",
+        "description": "ฉันเห็น หน้าต่างคอมมานด์ไลน์สีดำมีตัวหนังสือสีขาว ครับ"
+    },
+    {
+        "image_type": "alert",
+        "description": "ระบบตรวจพบ หน้าต่างแจ้งเตือนข้อผิดพลาดระบบสีแดง ครับ"
+    },
+    {
+        "image_type": "ui_window",
+        "description": "ระบบตรวจพบ หน้าต่างโปรแกรมสีดำกำลังเปิดอยู่ ครับ"
+    },
+    {
+        "image_type": "icon_folder",
+        "description": "ระบบตรวจพบ ไอคอนโฟลเดอร์สีเหลืองสำหรับเก็บไฟล์ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ภาพนี้คือ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "crosshair",
+        "description": "ฉันเห็น เป้าเล็งสีเขียวตรงกลางหน้าจอ ครับ"
+    },
+    {
+        "image_type": "game_hud",
+        "description": "ระบบตรวจพบ แถบพลังชีวิตสีแดงในเกม ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: ขอบคุณ โอไรออน: ยินดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หน้าจอมีอะไร โอไรออน: ระบบตรวจพบหน้าต่างโปรแกรม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: โอไรออน โอไรออน: ครับผม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+1 โอไรออน: 2 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: สวัสดี โอไรออน: สวัสดีครับ มีอะไรให้ช่วยไหม"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: 1+5 โอไรออน: 6 ครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: นายคืออะไร โอไรออน: ฉันคือระบบ AI ของคุณ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: hi โอไรออน: สวัสดีครับ"
+    },
+    {
+        "image_type": "conversation",
+        "description": "คุณ: หิวไหม โอไรออน: ฉันเป็น AI ไม่มีความรู้สึกหิวครับ"
+    }
+]
