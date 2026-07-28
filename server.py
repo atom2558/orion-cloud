@@ -330,20 +330,32 @@ def continuous_training_loop():
             print(f"[Training Node] Batch Avg Loss: {total_loss/len(target_texts):.4f}")
             torch.save(model.state_dict(), BRAIN_FILE)
             
-            # --- GITHUB PERSISTENT STORAGE ---
+            # --- GITHUB PERSISTENT STORAGE (Non-blocking) ---
             # Push to GitHub immediately if it's user data, or every 10 dream cycles
             if not is_dream or dream_counter % 10 == 0:
                 github_token = os.environ.get("GITHUB_TOKEN")
                 if github_token:
-                    try:
-                        g = Github(github_token)
-                        repo = g.get_repo("atom2558/orion-cloud")
-                        contents = repo.get_contents(BRAIN_FILE)
-                        with open(BRAIN_FILE, 'rb') as f:
-                            repo.update_file(contents.path, f"Auto-update brain weights (Dream={is_dream})", f.read(), contents.sha)
-                        print("[GitHub Storage] ✅ Pushed new brain to GitHub successfully!")
-                    except Exception as e:
-                        print(f"[GitHub Storage] ❌ Failed to push: {e}")
+                    def _upload_to_github():
+                        try:
+                            g = Github(github_token)
+                            repo = g.get_repo("atom2558/orion-cloud")
+                            
+                            # Read current brain
+                            with open(BRAIN_FILE, "rb") as f:
+                                content = f.read()
+                                
+                            try:
+                                contents = repo.get_contents("orion_lmm_brain_v2.pth")
+                                repo.update_file(contents.path, "Auto-update brain", content, contents.sha)
+                                print("[GitHub Storage] ☁️ Successfully updated Brain on GitHub!")
+                            except:
+                                repo.create_file("orion_lmm_brain_v2.pth", "Auto-create brain", content)
+                                print("[GitHub Storage] ☁️ Successfully created Brain on GitHub!")
+                        except Exception as e:
+                            print(f"[GitHub Storage] ❌ Upload failed: {e}")
+                            
+                    # Fire and forget thread so it doesn't slow down the main training loop
+                    threading.Thread(target=_upload_to_github, daemon=True).start()
                 else:
                     print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
             
