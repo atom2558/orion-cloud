@@ -116,15 +116,24 @@ class OrionGPTModel(nn.Module):
 class FastVisionEncoder(nn.Module):
     def __init__(self, embed_dim=64):
         super().__init__()
-        resnet = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
-        self.backbone = nn.Sequential(*list(resnet.children())[:-1])
-        self.projection = nn.Linear(512, embed_dim)
+        # Tiny CNN to save RAM on Render Free Tier (Replaces ResNet18)
+        self.backbone = nn.Sequential(
+            nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Flatten()
+        )
+        # Input: 224x224 -> Conv(112) -> MaxPool(56) -> Conv(28) -> MaxPool(14)
+        # Flattened: 32 * 14 * 14 = 6272
+        self.projection = nn.Linear(6272, embed_dim)
         
     def forward(self, images):
         features = self.backbone(images)
-        features = features.view(features.size(0), -1)
         visual_tokens = self.projection(features)
-        return visual_tokens.unsqueeze(1) 
+        return visual_tokens.unsqueeze(1)
 
 class OrionLMM(nn.Module):
     def __init__(self, vocab_size, embed_dim=64):
@@ -206,7 +215,12 @@ def continuous_training_loop():
     
     model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
     if os.path.exists(BRAIN_FILE):
-        model.load_state_dict(torch.load(BRAIN_FILE, map_location=device, weights_only=True))
+        try:
+            model.load_state_dict(torch.load(BRAIN_FILE, map_location=device, weights_only=True))
+            print("[Training Node] Successfully loaded previous brain weights.")
+        except Exception as e:
+            print(f"[Training Node] Could not load previous weights (Architecture changed? Starting fresh). Error: {e}")
+            
     model.to(device)
     model.train()
     
