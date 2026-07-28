@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 fastapi==0.109.2
 uvicorn==0.27.1
 torch
@@ -7,3 +8,5 @@ python-multipart==0.0.9
 openai
 PyGithub
 supabase
+requests
+

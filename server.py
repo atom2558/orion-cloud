@@ -178,7 +178,7 @@ app = FastAPI(title="ORION LMM Training Nexus (Cloud)")
 
 @app.on_event("startup")
 def startup_event():
-    print("[Server Startup] Starting continuous_training_loop thread...")
+    print("[Server Startup] Starting continuous_training_loop thread...", flush=True)
     threading.Thread(target=continuous_training_loop, daemon=True).start()
 
 # Paths (Relative to the server root)
