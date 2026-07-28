@@ -167,7 +167,19 @@ class OrionLMM(nn.Module):
 # 2. FASTAPI SERVER & CONTINUOUS TRAINING NODE
 # =============================================================================
 
+import logging
+class EndpointFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        return record.getMessage().find("/api/stats") == -1
+
+logging.getLogger("uvicorn.access").addFilter(EndpointFilter())
+
 app = FastAPI(title="ORION LMM Training Nexus (Cloud)")
+
+@app.on_event("startup")
+def startup_event():
+    print("[Server Startup] Starting continuous_training_loop thread...")
+    threading.Thread(target=continuous_training_loop, daemon=True).start()
 
 # Paths (Relative to the server root)
 MEMORY_FILE = "server_memory_queue.json"
@@ -497,7 +509,7 @@ def continuous_training_loop():
                             ans = line.split(":", 1)[1].strip()
                             ans = ans.replace("/no_think", "").strip()
                             target_text = f"คุณ: {current_q} โอไรออน: {ans}"
-                            print(f"[Dream Mode 💭] AI เรียนรู้: {target_text}")
+                            print(f"[Dream Mode] AI เรียนรู้: {target_text}")
                             target_texts.append(target_text)
                             current_q = ""
                             
@@ -543,7 +555,7 @@ def continuous_training_loop():
                 training_stats["total_qa_learned"] += trained_count
                 if is_dream:
                     training_stats["dream_count"] = dream_counter
-                    training_stats["status"] = f"Dream Mode 💭 (Cycle #{dream_counter})"
+                    training_stats["status"] = f"Dream Mode (Cycle #{dream_counter})"
                 else:
                     training_stats["user_train_count"] += trained_count
                     training_stats["status"] = f"Training from User 🧑‍💻"
@@ -592,5 +604,4 @@ def continuous_training_loop():
         time.sleep(sleep_time)
 
 if __name__ == "__main__":
-    threading.Thread(target=continuous_training_loop, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
