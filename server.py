@@ -181,6 +181,10 @@ async def download_brain():
         return FileResponse(BRAIN_FILE, media_type='application/octet-stream', filename="orion_lmm_brain_v2.pth")
     return {"error": "Brain not found"}
 
+@app.on_event("startup")
+async def startup_event():
+    threading.Thread(target=continuous_training_loop, daemon=True).start()
+
 @app.get("/")
 async def health_check():
     return {"status": "Online", "brain_size_kb": os.path.getsize(BRAIN_FILE) / 1024 if os.path.exists(BRAIN_FILE) else 0}
