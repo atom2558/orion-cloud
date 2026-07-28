@@ -261,11 +261,12 @@ def continuous_training_loop():
                 if ai_client:
                     try:
                         response = ai_client.chat.completions.create(
-                            model="gpt-4o-mini",
+                            model="qwen3.6-35b-a3b",
                             messages=[
                                 {"role": "user", "content": f"ตอบคำถามนี้เป็นภาษาไทยสั้นๆ กระชับ: {prompt}"}
                             ],
-                            max_tokens=80
+                            max_tokens=80,
+                            extra_body={"enable_thinking": False}
                         )
                         teacher_reply = response.choices[0].message.content
                         if teacher_reply:
@@ -281,11 +282,12 @@ def continuous_training_loop():
             if ai_client:
                 try:
                     resp = ai_client.chat.completions.create(
-                        model="gpt-4o-mini",
+                        model="qwen3.6-35b-a3b",
                         messages=[
                             {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 5 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ"}
                         ],
-                        max_tokens=400
+                        max_tokens=400,
+                        extra_body={"enable_thinking": False}
                     )
                     content = resp.choices[0].message.content
                     if not content or not content.strip():
