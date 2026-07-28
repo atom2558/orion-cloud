@@ -283,7 +283,7 @@ def continuous_training_loop():
                     resp = ai_client.chat.completions.create(
                         model="qwen3.6-35b-a3b",
                         messages=[
-                            {"role": "system", "content": "คุณคือ AI สร้างชุดข้อมูลสั้นๆ ให้แต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
+                            {"role": "user", "content": "คุณคือ AI สร้างชุดข้อมูล ให้แต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
                         ],
                         max_tokens=300
                     )
