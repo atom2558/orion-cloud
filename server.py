@@ -215,27 +215,29 @@ def continuous_training_loop():
     ])
     
     global memory_queue
+    dream_counter = 0
+    
+    # Initialize 9arm Teacher AI once
+    try:
+        ai_client = OpenAI(
+            api_key=os.environ.get("NINEARM_API_KEY", "sk-DvdsqHV_M5uxfQm3wWPWNA"),
+            base_url="https://gateway.9arm.co/v1"
+        )
+    except Exception as e:
+        print(f"[Teacher AI] Init error: {e}")
+        ai_client = None
+
     while True:
+        target_texts = []
+        is_dream = False
+        
         if len(memory_queue) > 0:
-            print(f"[Training Node] Training on {len(memory_queue)} new memories...")
+            print(f"[Training Node] 🧑‍💻 Training on {len(memory_queue)} new memories from User...")
             batch = memory_queue[:10]
             memory_queue = memory_queue[10:]
             
-            total_loss = 0
-            # Initialize 9arm Teacher AI
-            try:
-                ai_client = OpenAI(
-                    api_key=os.environ.get("NINEARM_API_KEY", "sk-DvdsqHV_M5uxfQm3wWPWNA"),
-                    base_url="https://gateway.9arm.co/v1"
-                )
-            except Exception as e:
-                print(f"[Teacher AI] Init error: {e}")
-                ai_client = None
-
             for log in batch:
                 prompt = log.get("prompt", "")
-                
-                # Call 9arm API to generate a high-quality response
                 target_text = f"คุณ: {prompt} โอไรออน: ระบบรับทราบครับ"
                 if ai_client:
                     try:
@@ -251,7 +253,40 @@ def continuous_training_loop():
                         target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply}"
                     except Exception as e:
                         print(f"[Teacher AI] Error: {e}")
+                target_texts.append(target_text)
                 
+        else:
+            # --- DREAM MODE (Self-Play) ---
+            is_dream = True
+            dream_counter += 1
+            if ai_client:
+                try:
+                    q_resp = ai_client.chat.completions.create(
+                        model="qwen3.6-35b-a3b",
+                        messages=[{"role": "user", "content": "สร้างคำถามภาษาไทยสั้นๆ 1 คำถาม ที่คนทั่วไปมักจะถาม AI (เช่น วันนี้กินอะไรดี, โลกกลมไหม, 1+1 ได้เท่าไหร่) ขอแค่คำถามเดียว ไม่ต้องมีคำอธิบาย"}],
+                        max_tokens=20
+                    )
+                    random_prompt = q_resp.choices[0].message.content.strip()
+                    
+                    a_resp = ai_client.chat.completions.create(
+                        model="qwen3.6-35b-a3b",
+                        messages=[
+                            {"role": "system", "content": "ตอบคำถามต่อไปนี้สั้นๆ กระชับ เป็นภาษาไทย ตอบแค่ตัวข้อความ ไม่ต้องมีคำอธิบาย"},
+                            {"role": "user", "content": random_prompt}
+                        ],
+                        max_tokens=50
+                    )
+                    teacher_reply = a_resp.choices[0].message.content.strip()
+                    target_text = f"คุณ: {random_prompt} โอไรออน: {teacher_reply}"
+                    print(f"[Dream Mode 💭] AI เรียนรู้ด้วยตัวเอง: {target_text}")
+                    target_texts.append(target_text)
+                except Exception as e:
+                    print(f"[Dream Mode] Error generating data: {e}")
+                    
+        # --- EXECUTE TRAINING ---
+        if len(target_texts) > 0:
+            total_loss = 0
+            for target_text in target_texts:
                 encoded = [stoi.get(c, 0) for c in target_text]
                 if len(encoded) < 2:
                     continue
@@ -269,26 +304,27 @@ def continuous_training_loop():
                 
                 total_loss += loss.item()
                 
-            print(f"[Training Node] Batch Avg Loss: {total_loss/len(batch):.4f}")
+            print(f"[Training Node] Batch Avg Loss: {total_loss/len(target_texts):.4f}")
             torch.save(model.state_dict(), BRAIN_FILE)
-            print("[Training Node] Brain updated & saved locally!")
             
             # --- GITHUB PERSISTENT STORAGE ---
-            github_token = os.environ.get("GITHUB_TOKEN")
-            if github_token:
-                try:
-                    g = Github(github_token)
-                    repo = g.get_repo("atom2558/orion-cloud")
-                    contents = repo.get_contents(BRAIN_FILE)
-                    with open(BRAIN_FILE, 'rb') as f:
-                        repo.update_file(contents.path, "Auto-update brain weights via Render", f.read(), contents.sha)
-                    print("[GitHub Storage] ✅ Pushed new brain to GitHub successfully!")
-                except Exception as e:
-                    print(f"[GitHub Storage] ❌ Failed to push: {e}")
-            else:
-                print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
+            # Push to GitHub immediately if it's user data, or every 10 dream cycles
+            if not is_dream or dream_counter % 10 == 0:
+                github_token = os.environ.get("GITHUB_TOKEN")
+                if github_token:
+                    try:
+                        g = Github(github_token)
+                        repo = g.get_repo("atom2558/orion-cloud")
+                        contents = repo.get_contents(BRAIN_FILE)
+                        with open(BRAIN_FILE, 'rb') as f:
+                            repo.update_file(contents.path, f"Auto-update brain weights (Dream={is_dream})", f.read(), contents.sha)
+                        print("[GitHub Storage] ✅ Pushed new brain to GitHub successfully!")
+                    except Exception as e:
+                        print(f"[GitHub Storage] ❌ Failed to push: {e}")
+                else:
+                    print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
             
-        time.sleep(10)
+        time.sleep(15) # Sleep 15s between loops
 
 if __name__ == "__main__":
     threading.Thread(target=continuous_training_loop, daemon=True).start()
