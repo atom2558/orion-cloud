@@ -12,6 +12,8 @@ import torch.optim as optim
 import torchvision.models as models
 from PIL import Image
 import torchvision.transforms as transforms
+from openai import OpenAI
+from github import Github
 
 # =============================================================================
 # 1. ORION LMM ARCHITECTURE (Flattened for Cloud Deployment)
@@ -220,11 +222,35 @@ def continuous_training_loop():
             memory_queue = memory_queue[10:]
             
             total_loss = 0
+            # Initialize 9arm Teacher AI
+            try:
+                ai_client = OpenAI(
+                    api_key=os.environ.get("NINEARM_API_KEY", "sk-DvdsqHV_M5uxfQm3wWPWNA"),
+                    base_url="https://gateway.9arm.co/v1"
+                )
+            except Exception as e:
+                print(f"[Teacher AI] Init error: {e}")
+                ai_client = None
+
             for log in batch:
                 prompt = log.get("prompt", "")
                 
-                # Basic Teacher AI Simulation: Enforce proper response format
-                target_text = f"คุณ: {prompt} โอไรออน: กำลังเรียนรู้และอัปเดตข้อมูลเกี่ยวกับ {prompt} ครับ"
+                # Call 9arm API to generate a high-quality response
+                target_text = f"คุณ: {prompt} โอไรออน: ระบบรับทราบครับ"
+                if ai_client:
+                    try:
+                        response = ai_client.chat.completions.create(
+                            model="qwen3.6-35b-a3b",
+                            messages=[
+                                {"role": "system", "content": "ช่วยแต่งประโยคตอบกลับที่สั้น กระชับ เป็นภาษาไทย เพื่อใช้สอน AI ตอบแค่ตัวข้อความ ไม่ต้องมีคำอธิบาย"},
+                                {"role": "user", "content": prompt}
+                            ],
+                            max_tokens=50
+                        )
+                        teacher_reply = response.choices[0].message.content.strip()
+                        target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply}"
+                    except Exception as e:
+                        print(f"[Teacher AI] Error: {e}")
                 
                 encoded = [stoi.get(c, 0) for c in target_text]
                 if len(encoded) < 2:
@@ -245,7 +271,22 @@ def continuous_training_loop():
                 
             print(f"[Training Node] Batch Avg Loss: {total_loss/len(batch):.4f}")
             torch.save(model.state_dict(), BRAIN_FILE)
-            print("[Training Node] Brain updated & saved!")
+            print("[Training Node] Brain updated & saved locally!")
+            
+            # --- GITHUB PERSISTENT STORAGE ---
+            github_token = os.environ.get("GITHUB_TOKEN")
+            if github_token:
+                try:
+                    g = Github(github_token)
+                    repo = g.get_repo("atom2558/orion-cloud")
+                    contents = repo.get_contents(BRAIN_FILE)
+                    with open(BRAIN_FILE, 'rb') as f:
+                        repo.update_file(contents.path, "Auto-update brain weights via Render", f.read(), contents.sha)
+                    print("[GitHub Storage] ✅ Pushed new brain to GitHub successfully!")
+                except Exception as e:
+                    print(f"[GitHub Storage] ❌ Failed to push: {e}")
+            else:
+                print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
             
         time.sleep(10)
 
