@@ -433,6 +433,7 @@ def continuous_training_loop():
                             # Strip <think> tags if present
                             import re
                             teacher_reply = re.sub(r'<think>.*?</think>', '', teacher_reply, flags=re.DOTALL).strip()
+                            teacher_reply = teacher_reply.replace("/no_think", "").strip()
                             if teacher_reply:
                                 target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply}"
                     except Exception as e:
@@ -448,7 +449,7 @@ def continuous_training_loop():
                     resp = ai_client.chat.completions.create(
                         model="qwen3.6-35b-a3b",
                         messages=[
-                            {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 5 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ /no_think"}
+                            {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 3 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ /no_think"}
                         ],
                         max_tokens=400
                     )
@@ -486,6 +487,7 @@ def continuous_training_loop():
                             current_q = line.split(":", 1)[1].strip()
                         elif line.lower().startswith("a:") and current_q:
                             ans = line.split(":", 1)[1].strip()
+                            ans = ans.replace("/no_think", "").strip()
                             target_text = f"คุณ: {current_q} โอไรออน: {ans}"
                             print(f"[Dream Mode 💭] AI เรียนรู้: {target_text}")
                             target_texts.append(target_text)
