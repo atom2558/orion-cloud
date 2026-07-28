@@ -287,9 +287,11 @@ def continuous_training_loop():
                         ],
                         max_tokens=300
                     )
-                    content = resp.choices[0].message.content.strip()
-                    
-                    # Parse the Q&A pairs
+                    content = resp.choices[0].message.content
+                    if content is None:
+                        print("[Dream Mode] API returned empty content (None)")
+                        continue
+                    content = content.strip()
                     lines = content.split('\n')
                     current_q = ""
                     for line in lines:
