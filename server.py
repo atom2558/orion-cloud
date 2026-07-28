@@ -13,7 +13,7 @@ import torchvision.models as models
 from PIL import Image
 import torchvision.transforms as transforms
 from openai import OpenAI
-from github import Github
+from supabase import create_client, Client
 
 # =============================================================================
 # 1. ORION LMM ARCHITECTURE (Flattened for Cloud Deployment)
@@ -332,34 +332,39 @@ def continuous_training_loop():
             print(f"[Training Node] Batch Avg Loss: {total_loss/len(target_texts):.4f}")
             torch.save(model.state_dict(), BRAIN_FILE)
             
-            # --- GITHUB PERSISTENT STORAGE (Non-blocking) ---
-            # Push to GitHub immediately if it's user data, or every 10 dream cycles
+            # --- SUPABASE PERSISTENT STORAGE (Non-blocking) ---
+            # Push to Supabase immediately if it's user data, or every 10 dream cycles
             if not is_dream or dream_counter % 10 == 0:
-                github_token = os.environ.get("GITHUB_TOKEN")
-                if github_token:
-                    def _upload_to_github():
+                supabase_url = os.environ.get("SUPABASE_URL")
+                supabase_key = os.environ.get("SUPABASE_KEY")
+                if supabase_url and supabase_key:
+                    def _upload_to_supabase():
                         try:
-                            g = Github(github_token)
-                            repo = g.get_repo("atom2558/orion-cloud")
+                            supabase: Client = create_client(supabase_url, supabase_key)
+                            bucket_name = "brains"
+                            file_path = "orion_lmm_brain_v2.pth"
                             
-                            # Read current brain
-                            with open(BRAIN_FILE, "rb") as f:
-                                content = f.read()
-                                
+                            # Ensure bucket exists (ignores if already exists)
                             try:
-                                contents = repo.get_contents("orion_lmm_brain_v2.pth")
-                                repo.update_file(contents.path, "Auto-update brain", content, contents.sha)
-                                print("[GitHub Storage] ☁️ Successfully updated Brain on GitHub!")
+                                supabase.storage.create_bucket(bucket_name)
                             except:
-                                repo.create_file("orion_lmm_brain_v2.pth", "Auto-create brain", content)
-                                print("[GitHub Storage] ☁️ Successfully created Brain on GitHub!")
+                                pass
+                                
+                            with open(BRAIN_FILE, "rb") as f:
+                                # Overwrite the file in the bucket
+                                supabase.storage.from_(bucket_name).upload(
+                                    file=os.path.abspath(BRAIN_FILE),
+                                    path=file_path,
+                                    file_options={"cacheControl": "3600", "upsert": "true"}
+                                )
+                            print("[Supabase Storage] ☁️ Successfully updated Brain on Supabase!")
                         except Exception as e:
-                            print(f"[GitHub Storage] ❌ Upload failed: {e}")
+                            print(f"[Supabase Storage] ❌ Upload failed: {e}")
                             
                     # Fire and forget thread so it doesn't slow down the main training loop
-                    threading.Thread(target=_upload_to_github, daemon=True).start()
+                    threading.Thread(target=_upload_to_supabase, daemon=True).start()
                 else:
-                    print("[GitHub Storage] ⚠️ GITHUB_TOKEN not set. Brain is not saved permanently.")
+                    print("[Supabase Storage] ⚠️ SUPABASE_URL or SUPABASE_KEY not set. Brain is not saved permanently.")
             
         # Sleep less in Dream Mode to collect data faster (2 seconds instead of 15)
         sleep_time = 2 if is_dream else 5

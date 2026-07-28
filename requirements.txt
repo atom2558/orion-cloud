@@ -6,3 +6,4 @@ pillow==11.1.0
 python-multipart==0.0.9
 openai
 PyGithub
+supabase
