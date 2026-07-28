@@ -176,6 +176,19 @@ DATASET_FILE = "dataset_lmm.json"
 
 memory_queue = []
 
+# --- TRAINING STATS (for Dashboard) ---
+training_stats = {
+    "status": "Initializing...",
+    "dream_count": 0,
+    "user_train_count": 0,
+    "total_qa_learned": 0,
+    "last_loss": 0.0,
+    "loss_history": [],
+    "recent_lessons": [],
+    "brain_size_kb": 0,
+    "uptime_start": time.time(),
+}
+
 @app.post("/upload_memory")
 async def upload_memory(file: UploadFile = File(...)):
     content = await file.read()
@@ -194,9 +207,153 @@ async def download_brain():
 async def startup_event():
     threading.Thread(target=continuous_training_loop, daemon=True).start()
 
-@app.get("/")
-async def health_check():
-    return {"status": "Online", "brain_size_kb": os.path.getsize(BRAIN_FILE) / 1024 if os.path.exists(BRAIN_FILE) else 0}
+@app.get("/api/stats")
+async def get_stats():
+    training_stats["brain_size_kb"] = round(os.path.getsize(BRAIN_FILE) / 1024, 1) if os.path.exists(BRAIN_FILE) else 0
+    training_stats["uptime_seconds"] = int(time.time() - training_stats["uptime_start"])
+    return training_stats
+
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse)
+async def dashboard():
+    return """
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORION AI - Training Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a1a;
+    color: #e0e0ff;
+    min-height: 100vh;
+  }
+  .bg-glow {
+    position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(100,60,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(0,200,255,0.06) 0%, transparent 50%);
+    z-index: 0; animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  .container { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+  .header {
+    text-align: center; margin-bottom: 35px;
+  }
+  .header h1 {
+    font-size: 2.2em; font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+  }
+  .header .sub { color: #8888aa; font-size: 0.9em; }
+  .status-badge {
+    display: inline-block; padding: 4px 14px; border-radius: 20px;
+    font-size: 0.8em; font-weight: 600; margin-top: 8px;
+    animation: glow 2s ease-in-out infinite;
+  }
+  .status-online { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .status-training { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  @keyframes glow { 0%,100% { box-shadow: 0 0 8px rgba(52,211,153,0.2); } 50% { box-shadow: 0 0 20px rgba(52,211,153,0.4); } }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 25px; }
+  .card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 22px; backdrop-filter: blur(10px);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(167,139,250,0.3); }
+  .card .label { font-size: 0.75em; color: #8888aa; text-transform: uppercase; letter-spacing: 1px; }
+  .card .value { font-size: 2em; font-weight: 700; margin-top: 6px; }
+  .card .value.purple { color: #a78bfa; }
+  .card .value.blue { color: #60a5fa; }
+  .card .value.green { color: #34d399; }
+  .card .value.amber { color: #fbbf24; }
+  .loss-chart {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 22px; margin-bottom: 25px;
+  }
+  .loss-chart h3 { font-size: 1em; color: #a78bfa; margin-bottom: 15px; }
+  .chart-area { height: 120px; display: flex; align-items: flex-end; gap: 3px; }
+  .chart-bar {
+    flex: 1; background: linear-gradient(to top, #a78bfa, #60a5fa); border-radius: 3px 3px 0 0;
+    min-height: 2px; transition: height 0.5s ease;
+  }
+  .lessons-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 22px;
+  }
+  .lessons-box h3 { font-size: 1em; color: #34d399; margin-bottom: 15px; }
+  .lesson-item {
+    padding: 10px 14px; margin-bottom: 8px; border-radius: 10px;
+    background: rgba(255,255,255,0.02); border-left: 3px solid #a78bfa;
+    font-size: 0.85em; line-height: 1.5; word-break: break-all;
+  }
+  .lesson-item:nth-child(even) { border-left-color: #60a5fa; }
+  .footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.75em; }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+  <div class="header">
+    <h1>🧠 ORION AI Training Dashboard</h1>
+    <div class="sub">ระบบติดตามการฝึกสอน AI แบบเรียลไทม์</div>
+    <div id="statusBadge" class="status-badge status-online">⏳ กำลังโหลด...</div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="label">💭 Dream Cycles</div><div class="value purple" id="dreamCount">-</div></div>
+    <div class="card"><div class="label">📚 Q&A Learned</div><div class="value blue" id="qaCount">-</div></div>
+    <div class="card"><div class="label">📉 Last Loss</div><div class="value amber" id="lastLoss">-</div></div>
+    <div class="card"><div class="label">🧠 Brain Size</div><div class="value green" id="brainSize">-</div></div>
+  </div>
+  <div class="loss-chart">
+    <h3>📈 Loss History (ยิ่งต่ำยิ่งฉลาด)</h3>
+    <div class="chart-area" id="chart"></div>
+  </div>
+  <div class="lessons-box">
+    <h3>📝 บทเรียนล่าสุด</h3>
+    <div id="lessons"><div class="lesson-item">กำลังรอข้อมูล...</div></div>
+  </div>
+  <div class="footer">ORION LMM &mdash; Auto-refresh ทุก 5 วินาที</div>
+</div>
+<script>
+async function refresh() {
+  try {
+    const r = await fetch('/api/stats');
+    const d = await r.json();
+    document.getElementById('dreamCount').textContent = d.dream_count;
+    document.getElementById('qaCount').textContent = d.total_qa_learned;
+    document.getElementById('lastLoss').textContent = d.last_loss.toFixed(4);
+    document.getElementById('brainSize').textContent = d.brain_size_kb + ' KB';
+    const badge = document.getElementById('statusBadge');
+    badge.textContent = '🟢 ' + d.status;
+    badge.className = 'status-badge ' + (d.status.includes('Dream') ? 'status-training' : 'status-online');
+    // Chart
+    const chart = document.getElementById('chart');
+    const hist = d.loss_history || [];
+    if (hist.length > 0) {
+      const max = Math.max(...hist, 0.01);
+      chart.innerHTML = hist.slice(-60).map(v =>
+        '<div class="chart-bar" style="height:' + Math.max((v/max)*100, 2) + '%"></div>'
+      ).join('');
+    }
+    // Lessons
+    const box = document.getElementById('lessons');
+    const lessons = d.recent_lessons || [];
+    if (lessons.length > 0) {
+      box.innerHTML = lessons.slice(-8).reverse().map(l => '<div class="lesson-item">' + l + '</div>').join('');
+    }
+  } catch(e) { console.error(e); }
+}
+refresh();
+setInterval(refresh, 5000);
+</script>
+</body></html>
+"""
 
 def continuous_training_loop():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -338,12 +495,19 @@ def continuous_training_loop():
                     print(f"[Dream Mode] Error: {e}. Sleeping 10s...")
                     time.sleep(10)
 
+        # --- EXECUTE TRAINING ---
         if len(target_texts) > 0:
             total_loss = 0
+            trained_count = 0
             for target_text in target_texts:
-                encoded = [stoi.get(c, 0) for c in target_text]
+                # Filter: only use characters that exist in vocabulary
+                filtered = [c for c in target_text if c in stoi]
+                encoded = [stoi[c] for c in filtered]
                 if len(encoded) < 2:
                     continue
+                
+                # Double-check: clamp indices to valid range
+                encoded = [min(e, vocab_size - 1) for e in encoded]
                     
                 idx = torch.tensor([encoded[:-1]], dtype=torch.long).to(device)
                 targets = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
@@ -357,8 +521,26 @@ def continuous_training_loop():
                 optimizer.step()
                 
                 total_loss += loss.item()
+                trained_count += 1
+            
+            if trained_count > 0:
+                avg_loss = total_loss / trained_count
+                print(f"[Training Node] Batch Avg Loss: {avg_loss:.4f}")
+                training_stats["last_loss"] = round(avg_loss, 4)
+                training_stats["loss_history"].append(round(avg_loss, 4))
+                if len(training_stats["loss_history"]) > 200:
+                    training_stats["loss_history"] = training_stats["loss_history"][-200:]
+                training_stats["total_qa_learned"] += trained_count
+                if is_dream:
+                    training_stats["dream_count"] = dream_counter
+                    training_stats["status"] = f"Dream Mode 💭 (Cycle #{dream_counter})"
+                else:
+                    training_stats["user_train_count"] += trained_count
+                    training_stats["status"] = f"Training from User 🧑‍💻"
+                for t in target_texts[-8:]:
+                    training_stats["recent_lessons"].append(t)
+                training_stats["recent_lessons"] = training_stats["recent_lessons"][-20:]
                 
-            print(f"[Training Node] Batch Avg Loss: {total_loss/len(target_texts):.4f}")
             torch.save(model.state_dict(), BRAIN_FILE)
             
             # --- SUPABASE PERSISTENT STORAGE (Non-blocking) ---
