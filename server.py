@@ -263,14 +263,21 @@ def continuous_training_loop():
                         response = ai_client.chat.completions.create(
                             model="qwen3.6-35b-a3b",
                             messages=[
-                                {"role": "user", "content": f"ตอบคำถามนี้เป็นภาษาไทยสั้นๆ กระชับ: {prompt}"}
+                                {"role": "user", "content": f"ตอบคำถามนี้เป็นภาษาไทยสั้นๆ กระชับ: {prompt} /no_think"}
                             ],
-                            max_tokens=80,
-                            extra_body={"enable_thinking": False}
+                            max_tokens=80
                         )
-                        teacher_reply = response.choices[0].message.content
+                        msg = response.choices[0].message
+                        teacher_reply = msg.content
+                        # Fallback: try reasoning_content if content is empty
+                        if not teacher_reply and hasattr(msg, 'reasoning_content') and msg.reasoning_content:
+                            teacher_reply = msg.reasoning_content
                         if teacher_reply:
-                            target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply.strip()}"
+                            # Strip <think> tags if present
+                            import re
+                            teacher_reply = re.sub(r'<think>.*?</think>', '', teacher_reply, flags=re.DOTALL).strip()
+                            if teacher_reply:
+                                target_text = f"คุณ: {prompt} โอไรออน: {teacher_reply}"
                     except Exception as e:
                         print(f"[Teacher AI] Error: {e}")
                 target_texts.append(target_text)
@@ -284,17 +291,36 @@ def continuous_training_loop():
                     resp = ai_client.chat.completions.create(
                         model="qwen3.6-35b-a3b",
                         messages=[
-                            {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 5 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ"}
+                            {"role": "user", "content": "สร้างชุดฝึกสอน AI ภาษาไทย 5 คู่ถาม-ตอบ ได้เลย รูปแบบแต่ละคู่:\nQ: คำถาม\nA: คำตอบ /no_think"}
                         ],
-                        max_tokens=400,
-                        extra_body={"enable_thinking": False}
+                        max_tokens=400
                     )
-                    content = resp.choices[0].message.content
+                    msg = resp.choices[0].message
+                    content = msg.content
+                    
+                    # Debug: print raw response structure
+                    print(f"[Dream Mode DEBUG] content type={type(content)}, content={repr(content)[:200]}")
+                    if hasattr(msg, 'reasoning_content'):
+                        print(f"[Dream Mode DEBUG] reasoning_content={repr(msg.reasoning_content)[:200]}")
+                    
+                    # Fallback: try reasoning_content if content is empty
+                    if not content and hasattr(msg, 'reasoning_content') and msg.reasoning_content:
+                        content = msg.reasoning_content
+                    
                     if not content or not content.strip():
                         print("[Dream Mode] API returned empty content. Sleeping 10s...")
                         time.sleep(10)
                         continue
-                    content = content.strip()
+                    
+                    # Strip <think> tags if present
+                    import re
+                    content = re.sub(r'<think>.*?</think>', '', content, flags=re.DOTALL).strip()
+                    
+                    if not content:
+                        print("[Dream Mode] Content was only thinking tags. Sleeping 10s...")
+                        time.sleep(10)
+                        continue
+                    
                     lines = content.split('\n')
                     current_q = ""
                     for line in lines:
