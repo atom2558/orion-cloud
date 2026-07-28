@@ -283,13 +283,15 @@ def continuous_training_loop():
                     resp = ai_client.chat.completions.create(
                         model="qwen3.6-35b-a3b",
                         messages=[
-                            {"role": "user", "content": "คุณคือ AI สร้างชุดข้อมูล ให้แต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
+                            {"role": "system", "content": "คุณคือผู้ช่วยสร้างชุดข้อมูล AI"},
+                            {"role": "user", "content": "ช่วยแต่งคำถามที่คนทั่วไปชอบถาม AI พร้อมคำตอบสั้นๆ กระชับ สร้างมา 5 คู่ โดยให้รูปแบบคือ Q: คำถาม A: คำตอบ"}
                         ],
                         max_tokens=300
                     )
                     content = resp.choices[0].message.content
                     if content is None:
-                        print("[Dream Mode] API returned empty content (None)")
+                        print("[Dream Mode] API returned empty content (None). Sleeping...")
+                        time.sleep(5)
                         continue
                     content = content.strip()
                     lines = content.split('\n')
