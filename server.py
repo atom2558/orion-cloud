@@ -1,19 +1,15 @@
 import os
 import json
 import time
+import gc
+import logging
 import threading
 from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import FileResponse
-import uvicorn
+from fastapi.responses import FileResponse, HTMLResponse
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
 import torch.optim as optim
-import torchvision.models as models
-from PIL import Image
-import torchvision.transforms as transforms
-from openai import OpenAI
-from supabase import create_client, Client
 
 # =============================================================================
 # 1. ORION LMM ARCHITECTURE (Flattened for Cloud Deployment)
@@ -201,17 +197,8 @@ class TinyTrainModel(nn.Module):
 # 2. FASTAPI SERVER & ON-DEMAND TRAINING NODE
 # =============================================================================
 
-import logging
-import time
-import os
-import json
-import threading
-from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import HTMLResponse, FileResponse
-import torch
-import torch.optim as optim
-import torchvision.transforms as transforms
-from PIL import Image
+
+
 
 class EndpointFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
@@ -263,8 +250,7 @@ def train_dataset_task(dataset):
         training_stats["status"] = f"Model ready. Vocab: {vocab_size} chars. Training..."
         
         # Use TinyTrainModel - ultra lightweight for Render 512MB RAM
-        import gc
-        model = TinyTrainModel(vocab_size, embed_dim=32)
+        model = TinyTrainModel(vocab_size, embed_dim=16)
         model.to(device)
         model.train()
         optimizer = optim.SGD(model.parameters(), lr=0.01)
@@ -293,7 +279,7 @@ def train_dataset_task(dataset):
             idx = torch.tensor([encoded[:-1]], dtype=torch.long).to(device)
             tgt = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
             
-            optimizer.zero_grad()
+            optimizer.zero_grad(set_to_none=True)
             logits, loss = model(idx, targets=tgt)
             loss.backward()
             optimizer.step()
@@ -329,26 +315,6 @@ def train_dataset_task(dataset):
         training_stats["progress"] = 0
         return
     
-    # Upload to Supabase if configured
-    try:
-        supabase_url = os.environ.get("SUPABASE_URL")
-        supabase_key = os.environ.get("SUPABASE_KEY")
-        if supabase_url and supabase_key:
-            from supabase import create_client, Client
-            supabase: Client = create_client(supabase_url, supabase_key)
-            bucket_name = "orion_brain"
-            file_path = "orion_lmm_brain_v2.pth"
-            try: supabase.storage.create_bucket(bucket_name)
-            except: pass
-            with open(BRAIN_FILE, "rb") as f:
-                supabase.storage.from_(bucket_name).upload(
-                    file=os.path.abspath(BRAIN_FILE),
-                    path=file_path,
-                    file_options={"cacheControl": "3600", "upsert": "true"}
-                )
-    except Exception as e:
-        print(f"Supabase upload failed: {e}")
-        
     training_stats["status"] = "Training Complete! 🚀"
 
 @app.post("/api/train")
