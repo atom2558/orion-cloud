@@ -209,89 +209,91 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def train_dataset_task(dataset):
     global training_stats
-    training_stats["status"] = "Preparing model..."
-    training_stats["progress"] = 0
-    
-    # Vocabulary setup (Extended for Thai/English full support)
-    all_text = "".join([d.get("q", "") + " " + d.get("a", "") for d in dataset])
-    thai_chars = "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮฤลฦะัาำิีึืุูเแโใไๅๆ็่้๊๋์ํ"
-    english_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    numbers = "0123456789"
-    symbols = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n"
-    all_text += thai_chars + english_chars + numbers + symbols
-    
-    chars = sorted(list(set(all_text)))
-    vocab_size = len(chars)
-    stoi = { ch:i for i,ch in enumerate(chars) }
-    
-    # FAST MODE: Train ONLY the language model, skip Vision Encoder entirely
-    lang_model = OrionGPTModel(vocab_size)
-    
-    # Try to load weights from full OrionLMM brain file
-    if os.path.exists(BRAIN_FILE):
-        try:
-            full_state = torch.load(BRAIN_FILE, map_location=device, weights_only=True)
-            lang_state = {}
-            prefix = "language_model."
-            for k, v in full_state.items():
-                if k.startswith(prefix):
-                    lang_state[k[len(prefix):]] = v
-            if lang_state:
-                lang_model.load_state_dict(lang_state, strict=False)
-                print("[Training] Loaded language model weights from brain file.")
-        except Exception as e:
-            print(f"Could not load previous weights: {e}")
+    try:
+        training_stats["status"] = "Preparing model..."
+        training_stats["progress"] = 0
+        training_stats["total_qa_learned"] = 0
+        training_stats["loss_history"] = []
+        training_stats["recent_lessons"] = []
+        
+        # Vocabulary setup (Extended for Thai/English full support)
+        all_text = "".join([d.get("q", "") + " " + d.get("a", "") for d in dataset])
+        thai_chars = "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮฤลฦะัาำิีึืุูเแโใไๅๆ็่้๊๋์ํ"
+        english_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        numbers = "0123456789"
+        symbols = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n"
+        all_text += thai_chars + english_chars + numbers + symbols
+        
+        chars = sorted(list(set(all_text)))
+        vocab_size = len(chars)
+        stoi = { ch:i for i,ch in enumerate(chars) }
+        
+        training_stats["status"] = f"Model ready. Vocab: {vocab_size} chars. Training..."
+        
+        # FAST MODE: Train ONLY the language model, skip Vision Encoder entirely
+        lang_model = OrionGPTModel(vocab_size)
+        lang_model.to(device)
+        lang_model.train()
+        optimizer = optim.AdamW(lang_model.parameters(), lr=1e-3)
+        
+        total_items = len(dataset)
+        
+        for i, item in enumerate(dataset):
+            q = item.get("q", "")
+            a = item.get("a", "")
+            target_text = f"คุณ: {q} โอไรออน: {a}"
             
-    lang_model.to(device)
-    lang_model.train()
-    optimizer = optim.AdamW(lang_model.parameters(), lr=1e-4)
-    
-    total_items = len(dataset)
-    
-    for i, item in enumerate(dataset):
-        q = item.get("q", "")
-        a = item.get("a", "")
-        target_text = f"คุณ: {q} โอไรออน: {a}"
-        
-        training_stats["status"] = f"Training item {i+1}/{total_items}"
-        training_stats["progress"] = int(((i + 1) / total_items) * 100)
-        
-        filtered = [c for c in target_text if c in stoi]
-        encoded = [stoi[c] for c in filtered]
-        if len(encoded) < 2:
-            continue
-        
-        # Clamp to block_size to prevent position embedding overflow
-        if len(encoded) > block_size:
-            encoded = encoded[:block_size]
+            training_stats["status"] = f"Training item {i+1}/{total_items}"
+            training_stats["progress"] = int(((i + 1) / total_items) * 100)
             
-        encoded = [min(e, vocab_size - 1) for e in encoded]
+            filtered = [c for c in target_text if c in stoi]
+            encoded = [stoi[c] for c in filtered]
+            if len(encoded) < 2:
+                continue
             
-        idx = torch.tensor([encoded[:-1]], dtype=torch.long).to(device)
-        targets = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
+            # Clamp to block_size to prevent position embedding overflow
+            if len(encoded) > block_size:
+                encoded = encoded[:block_size]
+                
+            encoded = [min(e, vocab_size - 1) for e in encoded]
+                
+            idx = torch.tensor([encoded[:-1]], dtype=torch.long).to(device)
+            tgt = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
+            
+            optimizer.zero_grad()
+            logits, loss = lang_model(idx, targets=tgt)
+            loss.backward()
+            optimizer.step()
+            
+            training_stats["last_loss"] = round(loss.item(), 4)
+            training_stats["total_qa_learned"] += 1
+            
+            if len(training_stats["loss_history"]) >= 20:
+                training_stats["loss_history"].pop(0)
+            training_stats["loss_history"].append(training_stats["last_loss"])
+            
+            training_stats["recent_lessons"] = [target_text] + training_stats["recent_lessons"][:4]
+            
+            # Free memory each step
+            del idx, tgt, logits, loss
         
-        optimizer.zero_grad()
-        logits, loss = lang_model(idx, targets=targets)
-        loss.backward()
-        optimizer.step()
+        training_stats["progress"] = 100
+        training_stats["status"] = "Saving Brain..."
         
-        training_stats["last_loss"] = round(loss.item(), 4)
-        training_stats["total_qa_learned"] += 1
-        
-        if len(training_stats["loss_history"]) >= 20:
-            training_stats["loss_history"].pop(0)
-        training_stats["loss_history"].append(training_stats["last_loss"])
-        
-        training_stats["recent_lessons"] = [target_text] + training_stats["recent_lessons"][:4]
-        
-    training_stats["progress"] = 100
-    training_stats["status"] = "Saving Brain..."
-    
-    # Rebuild full OrionLMM and inject trained language model weights
-    full_model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
-    full_model.language_model.load_state_dict(lang_model.state_dict())
-    torch.save(full_model.state_dict(), BRAIN_FILE)
-    print(f"[Training] Saved brain: {vocab_size} vocab, {total_items} items trained.")
+        # Rebuild full OrionLMM and inject trained language model weights
+        full_model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
+        full_model.language_model.load_state_dict(lang_model.state_dict())
+        torch.save(full_model.state_dict(), BRAIN_FILE)
+        del lang_model, full_model
+        print(f"[Training] Saved brain: {vocab_size} vocab, {total_items} items trained.")
+    except Exception as e:
+        import traceback
+        err_msg = f"ERROR: {str(e)}"
+        print(f"[Training] {err_msg}")
+        print(traceback.format_exc())
+        training_stats["status"] = err_msg
+        training_stats["progress"] = 0
+        return
     
     # Upload to Supabase if configured
     try:
