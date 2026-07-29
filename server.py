@@ -461,7 +461,11 @@ async def dashboard():
   <div class="grid">
     <div class="card"><div class="label">📊 Q&A Learned</div><div class="value blue" id="learnedCount">0</div></div>
     <div class="card"><div class="label">📉 Last Loss</div><div class="value amber" id="lastLoss">0.0000</div></div>
-    <div class="card"><div class="label">🧠 Brain Size</div><div class="value green" id="brainSize">0 KB</div></div>
+    <div class="card">
+      <div class="label">🧠 Brain Size</div>
+      <div class="value green" id="brainSize">0 KB</div>
+      <a href="/download_brain" style="display: inline-block; margin-top: 10px; padding: 5px 10px; background: rgba(52, 211, 153, 0.2); color: #34d399; text-decoration: none; border-radius: 5px; font-size: 0.8em; border: 1px solid #34d399;">⬇️ ดาวน์โหลดสมอง</a>
+    </div>
   </div>
 
   <div class="lessons-box">
