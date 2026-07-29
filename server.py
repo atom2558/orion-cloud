@@ -224,30 +224,27 @@ def train_dataset_task(dataset):
     vocab_size = len(chars)
     stoi = { ch:i for i,ch in enumerate(chars) }
     
-    model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
+    # FAST MODE: Train ONLY the language model, skip Vision Encoder entirely
+    lang_model = OrionGPTModel(vocab_size)
+    
+    # Try to load weights from full OrionLMM brain file
     if os.path.exists(BRAIN_FILE):
         try:
-            model.load_state_dict(torch.load(BRAIN_FILE, map_location=device, weights_only=True))
+            full_state = torch.load(BRAIN_FILE, map_location=device, weights_only=True)
+            lang_state = {}
+            prefix = "language_model."
+            for k, v in full_state.items():
+                if k.startswith(prefix):
+                    lang_state[k[len(prefix):]] = v
+            if lang_state:
+                lang_model.load_state_dict(lang_state, strict=False)
+                print("[Training] Loaded language model weights from brain file.")
         except Exception as e:
             print(f"Could not load previous weights: {e}")
             
-    model.to(device)
-    model.train()
-    optimizer = optim.AdamW(model.parameters(), lr=1e-4)
-    
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    
-    # Optimize: Freeze vision encoder for text-only dataset to save computation
-    for param in model.vision_encoder.parameters():
-        param.requires_grad = False
-        
-    # Optimize: Pre-compute the blank image tensor ONCE outside the loop
-    img = Image.new('RGB', (224, 224), color='black')
-    img_tensor = transform(img).unsqueeze(0).to(device)
+    lang_model.to(device)
+    lang_model.train()
+    optimizer = optim.AdamW(lang_model.parameters(), lr=1e-4)
     
     total_items = len(dataset)
     
@@ -263,6 +260,10 @@ def train_dataset_task(dataset):
         encoded = [stoi[c] for c in filtered]
         if len(encoded) < 2:
             continue
+        
+        # Clamp to block_size to prevent position embedding overflow
+        if len(encoded) > block_size:
+            encoded = encoded[:block_size]
             
         encoded = [min(e, vocab_size - 1) for e in encoded]
             
@@ -270,7 +271,7 @@ def train_dataset_task(dataset):
         targets = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
         
         optimizer.zero_grad()
-        logits, loss = model(img_tensor, idx, targets=targets)
+        logits, loss = lang_model(idx, targets=targets)
         loss.backward()
         optimizer.step()
         
@@ -286,7 +287,11 @@ def train_dataset_task(dataset):
     training_stats["progress"] = 100
     training_stats["status"] = "Saving Brain..."
     
-    torch.save(model.state_dict(), BRAIN_FILE)
+    # Rebuild full OrionLMM and inject trained language model weights
+    full_model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
+    full_model.language_model.load_state_dict(lang_model.state_dict())
+    torch.save(full_model.state_dict(), BRAIN_FILE)
+    print(f"[Training] Saved brain: {vocab_size} vocab, {total_items} items trained.")
     
     # Upload to Supabase if configured
     try:
