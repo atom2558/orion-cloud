@@ -163,6 +163,38 @@ class OrionLMM(nn.Module):
         return logits, loss
 
 
+# --- Ultra-lightweight model for Render Free Tier (512MB RAM) ---
+TINY_BLOCK_SIZE = 32
+
+class TinyTrainModel(nn.Module):
+    def __init__(self, vocab_size, embed_dim=32):
+        super().__init__()
+        self.token_embedding = nn.Embedding(vocab_size, embed_dim)
+        self.position_embedding = nn.Embedding(TINY_BLOCK_SIZE, embed_dim)
+        self.ln1 = nn.LayerNorm(embed_dim)
+        self.linear1 = nn.Linear(embed_dim, embed_dim * 2)
+        self.ln2 = nn.LayerNorm(embed_dim * 2)
+        self.linear2 = nn.Linear(embed_dim * 2, vocab_size)
+    
+    def forward(self, idx, targets=None):
+        B, T = idx.shape
+        tok_emb = self.token_embedding(idx)
+        pos_emb = self.position_embedding(torch.arange(T, device=idx.device))
+        x = tok_emb + pos_emb
+        x = self.ln1(x)
+        x = F.relu(self.linear1(x))
+        x = self.ln2(x)
+        logits = self.linear2(x)
+        
+        loss = None
+        if targets is not None:
+            B, T, C = logits.shape
+            logits_flat = logits.view(B*T, C)
+            targets_flat = targets.view(B*T)
+            loss = F.cross_entropy(logits_flat, targets_flat)
+        return logits, loss
+
+
 # =============================================================================
 
 # =============================================================================
@@ -230,11 +262,12 @@ def train_dataset_task(dataset):
         
         training_stats["status"] = f"Model ready. Vocab: {vocab_size} chars. Training..."
         
-        # FAST MODE: Train ONLY the language model, skip Vision Encoder entirely
-        lang_model = OrionGPTModel(vocab_size)
-        lang_model.to(device)
-        lang_model.train()
-        optimizer = optim.AdamW(lang_model.parameters(), lr=1e-3)
+        # Use TinyTrainModel - ultra lightweight for Render 512MB RAM
+        import gc
+        model = TinyTrainModel(vocab_size, embed_dim=32)
+        model.to(device)
+        model.train()
+        optimizer = optim.SGD(model.parameters(), lr=0.01)
         
         total_items = len(dataset)
         
@@ -251,9 +284,9 @@ def train_dataset_task(dataset):
             if len(encoded) < 2:
                 continue
             
-            # Clamp to block_size to prevent position embedding overflow
-            if len(encoded) > block_size:
-                encoded = encoded[:block_size]
+            # Clamp to TINY_BLOCK_SIZE
+            if len(encoded) > TINY_BLOCK_SIZE:
+                encoded = encoded[:TINY_BLOCK_SIZE]
                 
             encoded = [min(e, vocab_size - 1) for e in encoded]
                 
@@ -261,30 +294,31 @@ def train_dataset_task(dataset):
             tgt = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
             
             optimizer.zero_grad()
-            logits, loss = lang_model(idx, targets=tgt)
+            logits, loss = model(idx, targets=tgt)
             loss.backward()
             optimizer.step()
             
-            training_stats["last_loss"] = round(loss.item(), 4)
+            cur_loss = round(loss.item(), 4)
+            training_stats["last_loss"] = cur_loss
             training_stats["total_qa_learned"] += 1
             
             if len(training_stats["loss_history"]) >= 20:
                 training_stats["loss_history"].pop(0)
-            training_stats["loss_history"].append(training_stats["last_loss"])
+            training_stats["loss_history"].append(cur_loss)
             
             training_stats["recent_lessons"] = [target_text] + training_stats["recent_lessons"][:4]
             
-            # Free memory each step
+            # Aggressively free memory
             del idx, tgt, logits, loss
+            gc.collect()
         
         training_stats["progress"] = 100
         training_stats["status"] = "Saving Brain..."
         
-        # Rebuild full OrionLMM and inject trained language model weights
-        full_model = OrionLMM(vocab_size=vocab_size, embed_dim=64)
-        full_model.language_model.load_state_dict(lang_model.state_dict())
-        torch.save(full_model.state_dict(), BRAIN_FILE)
-        del lang_model, full_model
+        # Save tiny model directly
+        torch.save(model.state_dict(), BRAIN_FILE)
+        del model
+        gc.collect()
         print(f"[Training] Saved brain: {vocab_size} vocab, {total_items} items trained.")
     except Exception as e:
         import traceback
