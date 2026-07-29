@@ -306,18 +306,21 @@ def train_dataset_task(dataset):
     training_stats["status"] = "Training Complete! 🚀"
 
 @app.post("/api/train")
-async def train_dataset(file: UploadFile = File(...)):
+async def train_dataset(files: list[UploadFile] = File(...)):
     if training_stats["progress"] > 0 and training_stats["progress"] < 100:
         return {"error": "Training already in progress."}
         
-    content = await file.read()
-    try:
-        dataset = json.loads(content.decode('utf-8'))
-    except:
-        return {"error": "Invalid JSON file."}
+    all_dataset = []
+    for file in files:
+        content = await file.read()
+        try:
+            dataset = json.loads(content.decode('utf-8'))
+            all_dataset.extend(dataset)
+        except:
+            return {"error": f"Invalid JSON file: {file.filename}"}
     
     # Start training in background
-    threading.Thread(target=train_dataset_task, args=(dataset,), daemon=True).start()
+    threading.Thread(target=train_dataset_task, args=(all_dataset,), daemon=True).start()
     return {"status": "success", "message": "Training started."}
 
 @app.get("/download_brain")
@@ -430,11 +433,11 @@ async def dashboard():
   </div>
   
   <div class="upload-box" id="uploadBox">
-    <h3 style="margin-bottom: 10px; color: #fff;">อัปโหลดไฟล์ Dataset (.json)</h3>
+    <h3 style="margin-bottom: 10px; color: #fff;">อัปโหลดไฟล์ Dataset (.json) ทีละหลายไฟล์ได้</h3>
     <p style="color: #888; font-size: 0.85em; margin-bottom: 20px;">รูปแบบ: [{"q": "คำถาม", "a": "คำตอบ"}]</p>
     <label class="btn" style="display:inline-block;">
       เลือกไฟล์และเริ่มเทรน
-      <input type="file" id="fileInput" accept=".json" onchange="uploadAndTrain(this)">
+      <input type="file" id="fileInput" accept=".json" multiple onchange="uploadAndTrain(this)">
     </label>
     
     <div id="progressContainer" class="progress-container">
@@ -458,12 +461,13 @@ async def dashboard():
 <script>
 async function uploadAndTrain(input) {
   if (!input.files || input.files.length === 0) return;
-  const file = input.files[0];
   const formData = new FormData();
-  formData.append("file", file);
+  for (let i = 0; i < input.files.length; i++) {
+    formData.append("files", input.files[i]);
+  }
   
   document.getElementById("progressContainer").style.display = "block";
-  document.getElementById("progressText").innerText = "กำลังอัปโหลดและเตรียมการ...";
+  document.getElementById("progressText").innerText = "กำลังอัปโหลดและรวมไฟล์...";
   
   try {
     const res = await fetch('/api/train', { method: 'POST', body: formData });
