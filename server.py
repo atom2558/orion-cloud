@@ -241,6 +241,14 @@ def train_dataset_task(dataset):
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
     
+    # Optimize: Freeze vision encoder for text-only dataset to save computation
+    for param in model.vision_encoder.parameters():
+        param.requires_grad = False
+        
+    # Optimize: Pre-compute the blank image tensor ONCE outside the loop
+    img = Image.new('RGB', (224, 224), color='black')
+    img_tensor = transform(img).unsqueeze(0).to(device)
+    
     total_items = len(dataset)
     
     for i, item in enumerate(dataset):
@@ -260,9 +268,6 @@ def train_dataset_task(dataset):
             
         idx = torch.tensor([encoded[:-1]], dtype=torch.long).to(device)
         targets = torch.tensor([encoded[1:]], dtype=torch.long).to(device)
-        
-        img = Image.new('RGB', (224, 224), color='black')
-        img_tensor = transform(img).unsqueeze(0).to(device)
         
         optimizer.zero_grad()
         logits, loss = model(img_tensor, idx, targets=targets)
